@@ -64,3 +64,59 @@ function log(message: string | number): void {
 }
 
 // Interfaces
+interface UserInterface {
+    readonly id: number,
+    name: string
+}
+const user1: UserInterface = {
+    id: 1,
+    name: "John"
+}
+// function interface
+interface MathFunc {
+    (x: number, y: number): number
+}
+const add: MathFunc = (x: number, y: number): number => x + y
+const sub: MathFunc = (x: number, y: number): number => x - y
+
+// Classes
+interface PersonInterface {
+    id: number,
+    name: string,
+    register(): string
+}
+class Person implements PersonInterface {
+    id: number
+    name: string
+
+    constructor (id: number, name: string) {
+        this.id = id
+        this.name = name
+    }
+
+    register () {
+        return `${this.name} is now registered`
+    }
+}
+const kizi = new Person(1, "Kizito")
+const brad = new Person(2, "Brad")
+// Subclasses
+class Employee extends Person {
+    position: string
+
+    constructor (id: number, name: string, position: string) {
+        super(id, name)
+        this.position = position
+    }
+}
+const emp = new Employee(3, "Kizito", "developer")
+console.log(emp.register())
+
+// Generics
+function getArray<T>(items: T[]): T[] {
+    return new Array().concat(items)
+}
+let numArray = getArray<number>([1,2,3,4])
+let strArray = getArray<string>(["Kizito", "Brad", "Tate"])
+
+strArray.push("hello")

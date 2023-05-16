@@ -49,4 +49,36 @@ function addNum(x, y) {
 function log(message) {
     console.log(message);
 }
-// Interfaces
+const user1 = {
+    id: 1,
+    name: "John"
+};
+const add = (x, y) => x + y;
+const sub = (x, y) => x - y;
+class Person {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+    register() {
+        return `${this.name} is now registered`;
+    }
+}
+const kizi = new Person(1, "Kizito");
+const brad = new Person(2, "Brad");
+// Subclasses
+class Employee extends Person {
+    constructor(id, name, position) {
+        super(id, name);
+        this.position = position;
+    }
+}
+const emp = new Employee(3, "Kizito", "developer");
+console.log(emp.register());
+// Generics
+function getArray(items) {
+    return new Array().concat(items);
+}
+let numArray = getArray([1, 2, 3, 4]);
+let strArray = getArray(["Kizito", "Brad", "Tate"]);
+strArray.push("hello");
